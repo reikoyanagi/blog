@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>blog</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+   <!--  <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Unica+One::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script> -->
+  </head>
+
+  <body>
+
+  <header class="header">
+
+    <div class ="header--top">
+
+
+
+     <a class ="blogtitle" href="/">    <i class="fa fa-layer-sircle"></i>Blog<i class="fa fa-magento"></i></a>
+
+         </div>
+      <% if user_signed_in? %>
+        <div class="user_nav grid-6">
+          <div class="logouttag">
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        </div>
+        <div class="sendtag">
+          <a class="post" href="/tweets/new">Write</a>
+        </div>
+      </div>
+      <% else %>
+        <div class="logintag">
+          <%= link_to "Log in", new_user_session_path, class: 'post' %>
+        </div>
+        <div class="newtag">
+          <%= link_to "Sign up", new_user_registration_path, class: 'post' %>
+        </div>
+      <% end %>
+  </header>
+
+    <%= yield %>
+
+
+  </body>
+</html>

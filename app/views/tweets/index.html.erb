@@ -1,0 +1,22 @@
+<img src="assets/karf.jpg">
+<div class = "contents">
+  <% @tweets.each do |tweet| %>
+    <%= simple_format(tweet.text) %><br>
+      <span class="name"><%= tweet.user.nickname %>&emsp;</span>
+      <span class="created_at"><%=tweet.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+      <% if user_signed_in? && current_user.id == tweet.user_id %>
+        <%= link_to "/tweets/#{tweet.id}/edit", method: :get  do%>
+          <i class="fa fa-edit"></i>
+        <% end %>&emsp;
+        <%= link_to "/tweets/#{tweet.id}", method: :delete do%>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      <% end %>
+        <br><br><br><br><br>
+  <% end %>
+</div>
+  <footer>
+    <p>
+      Copyright blog 2019.
+    </p>
+  </footer>
