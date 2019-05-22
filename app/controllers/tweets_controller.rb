@@ -1,6 +1,6 @@
   class TweetsController < ApplicationController
 
-    before_action :move_to_index, except: :index
+    before_action :move_to_index,except: :index
 
 
     def index
@@ -27,13 +27,19 @@
     def update
       tweet = Tweet.find(params[:id])
       if tweet.user_id == current_user.id
-        tweet.update(tweet_params)
+
+        tweet.update(update_params)
+        # redirect_to controller: :tweets, action: :index
       end
     end
 
     private
     def tweet_params
       params.permit(:name, :text)
+    end
+
+    def update_params
+      params.require(:tweet).permit(:name, :text).merge(id: params[:id], user_id: current_user.id)
     end
 
     def move_to_index
