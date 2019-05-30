@@ -1,11 +1,9 @@
 <div class ="user-page">
   <div class="edit-page">
     <%= form_for @tweet do |form|%>
-      <h3>
-        Update
-      </h3>
+      <h5>Post edit</h5>
       <%= form.text_area :text %>
-      <br><br><input type="submit" value="SENT">
+      <br><br><input type="submit" class ="btn" value="SENT">
     <% end %>
   </div>
 </div>

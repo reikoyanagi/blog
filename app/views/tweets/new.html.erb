@@ -1,11 +1,9 @@
 <div class ="user-page">
   <div class="wright-page">
   <%= form_with(model:Tweet.new,local:true) do |form|%>
-    <h3>
-      How was the day today?
-    </h3>
+    <h5>What's happening?</h5>
     <textarea wrap="hard"cols="50" name="text" placeholder="text" rows="10"></textarea><br><br>
-    <input type="submit" value="SENT">
+    <input type="submit" class ="btn" value="SENT">
   <% end %>
   </div>
 </div>

@@ -3,13 +3,13 @@
   <% @tweets.each do |tweet| %>
     <%= simple_format(tweet.text) %>
       <span class="name"><%= tweet.user.nickname %>&emsp;</span>
-      <span class="created_at"><%=tweet.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
+      <span class="created_at"><%=tweet.created_at.strftime("%Y-%m-%d %H:%M:%S") %>&emsp;</span>
       <% if user_signed_in? && current_user.id == tweet.user_id %>
         <%= link_to "/tweets/#{tweet.id}/edit", method: :get  do%>
-          <i class="fa fa-edit"></i>
+          <i class="fa fa-edit faa-wrench fa-lg animated-hover"></i>
         <% end %>&emsp;
         <%= link_to "/tweets/#{tweet.id}", method: :delete do%>
-          <i class="fa fa-trash"></i>
+          <i class="fa fa-trash fa-lg faa-wrench animated-hover"></i>
         <% end %>
       <% end %>
         <br><br><br><br><br>
